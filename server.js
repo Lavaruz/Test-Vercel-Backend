@@ -1,11 +1,7 @@
-const express = require("express");
-const app = express();
+const http = require('http')
+const app = require('./api/index')
 
-app.use(express.json());
+const server = http.createServer(app)
+const port = process.env.PORT || 3000
 
-app.get("/", (req, res) => {
-  res.json({ status: "OK" });
-});
-
-let port = process.env.PORT || 8080;
-app.listen(port, () => console.log("server run at port 3000"));
+server.listen(port, () => console.log('server run at port ' + port))

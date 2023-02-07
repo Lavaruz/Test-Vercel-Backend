@@ -7,4 +7,5 @@ app.get("/", (req, res) => {
   res.json({ status: "OK" });
 });
 
-app.listen(3000, () => console.log("server run at port 3000"));
+let port = process.env.PORT || 8080;
+app.listen(port, () => console.log("server run at port 3000"));

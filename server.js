@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require('axios')
 
 const app = express();
 
@@ -6,8 +7,16 @@ app.get("/", (req, res) => {
   res.send("Express on Vercel");
 });
 
-app.listen(5000, () => {
-  console.log("Running on port 5000.");
+app.get('/joke', async (req,res) => {
+  await axios.get('https://v2.jokeapi.dev/joke/Any').then(result => {
+    res.json(result.data)
+  })
+})
+
+const PORT = process.env.PORT || 4000
+
+app.listen(PORT, () => {
+  console.log("Running on port" + PORT);
 });
 
 // Export the Express API

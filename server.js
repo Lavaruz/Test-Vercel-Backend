@@ -1,7 +1,13 @@
-const http = require('http')
-const app = require('./apis/index')
+const express = require('express')
+const app = express()
 
-const server = http.createServer(app)
-const port = process.env.PORT || 3000
+app.route('/')
+.get(function (req,res) {
+    res.send('gg')
+})
 
-server.listen(port, () => console.log('server run at port ' + port))
+const PORT = process.env.PORT || 4000
+
+app.listen(PORT , ()=> console.log(`urn at port ${PORT}`))
+
+module.exports = app
